@@ -1,31 +1,36 @@
+import java.util.Arrays;
+
 /*
     Aufgabe 1) Rekursion - Diverse Methoden
 */
 public class Aufgabe1 {
     
     private static int printAndCountNumbers(int x, int y) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return -1;
-    }
+        System.out.println(x);
+        if(x==y)return x;
+        return printAndCountNumbers(x+1,y)+x;
+}
     
     private static int printAndCountNumbersDes(int x, int y) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return -1;
+        System.out.println(y);
+        if(x==y)return x;
+        return printAndCountNumbersDes(x,y-1)+y;
     }
     
     private static int calcMaxSumTriple(int[] array, int i) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return -1;
+        if(i==array.length-2)return 0;
+        return Math.max(array[i]+array[i+1]+array[i+2],calcMaxSumTriple(array,i+1));
     }
     
     private static int calcMaxSumTriple(int[] array) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return -1;
+        if(array.length==2)return 0;
+        int[] newArray=Arrays.copyOf(array,array.length-1);
+        return Math.max(array[array.length-1]+array[array.length-2]+array[array.length-3],calcMaxSumTriple(newArray));
     }
     
     private static int findMaxDiff(int[] array, int i) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Methode
-        return -1;
+        if(i==0)return -1;
+        return Math.max(Math.abs(array[i]-array[i-1]),findMaxDiff(array,i-1));
     }
     
     public static void main(String[] args) {
