@@ -7,11 +7,21 @@ public class Aufgabe4 {
     private static final int RADIUS = 10;
 
     private static void printCirclesInLine(int val, int x, int y) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Angabe
+        if (val == 0) return;
+        StdDraw.setPenColor(val%2==0 ? StdDraw.ORANGE : StdDraw.BLUE);
+        StdDraw.filledCircle(x, y, RADIUS);
+        StdDraw.filledCircle(x, y+RADIUS * 2, RADIUS);
+        printCirclesInLine(val - 1, x+RADIUS * 2, y);
     }
 
     private static void printShape(int val, int max, int y) {
-        // TODO: Implementieren Sie hier Ihre Lösung für die Angabe
+        if (val == max) { printCirclesInLine(val, RADIUS, y); return; }
+        else {
+            int y2 = y + (max-val) * RADIUS * 2 * 2 * 2;
+            printCirclesInLine(val, RADIUS, y);
+            printCirclesInLine(val, RADIUS, y2);
+        }
+        printShape(++val, max, y + RADIUS * 4);
     }
 
     public static void main(String[] args) {
